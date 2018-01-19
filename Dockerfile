@@ -13,6 +13,7 @@ RUN a2enmod rewrite && \
     wget https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz && \
     tar xzf dokuwiki-stable.tgz && \
     mv dokuwiki-*/ dokuwiki && \
+    chown -R apache:apache /var/www/dokuwiki && \
     mkdir -p /var/dokuwiki-storage/data && \
     mv /var/www/dokuwiki/data/pages /var/dokuwiki-storage/data/pages && \
     ln -s /var/dokuwiki-storage/data/pages /var/www/dokuwiki/data/pages && \
@@ -29,7 +30,11 @@ RUN a2enmod rewrite && \
     mv /var/www/dokuwiki/conf /var/dokuwiki-storage/conf && \
     ln -s /var/dokuwiki-storage/conf /var/www/dokuwiki/conf
 
-
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+ENV APACHE_LOG_DIR /var/log/apache2
+ENV APACHE_PID_FILE /var/run/apache2.pid
+ENV APACHE_LOCK_DIR /var/run/apache2
 
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY apache2.conf /etc/apache2/apache2.conf
