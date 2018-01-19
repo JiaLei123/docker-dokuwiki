@@ -13,7 +13,6 @@ RUN a2enmod rewrite && \
     wget https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz && \
     tar xzf dokuwiki-stable.tgz && \
     mv dokuwiki-*/ dokuwiki && \
-    chown -R apache:apache /var/www/dokuwiki && \
     mkdir -p /var/dokuwiki-storage/data && \
     mv /var/www/dokuwiki/data/pages /var/dokuwiki-storage/data/pages && \
     ln -s /var/dokuwiki-storage/data/pages /var/www/dokuwiki/data/pages && \
