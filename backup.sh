@@ -7,4 +7,4 @@
 
 
 DATE=`date +%Y-%m-%d`
-docker run --rm --volumes-from dokuwiki-data -v $(pwd):/backup ubuntu:14.04 tar zcvf /backup/dokuwiki-backup-{DATE}.tar.gz /var/dokuwiki-storage
+docker run --rm --volumes-from dokuwiki-data -v $(pwd):/backup ubuntu:14.04 tar zcvf /backup/dokuwiki-backup-${DATE}.tar.gz /var/dokuwiki-storage
